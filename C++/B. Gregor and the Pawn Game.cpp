@@ -31,7 +31,7 @@ bool dfs(ll i,vector<char>& va , vector<char>& vb){
 }
 
 void solve(){
-    ll n;
+    ll n;   
     cin>>n;
     string linha;
     vector<char>va(n),vb(n);
