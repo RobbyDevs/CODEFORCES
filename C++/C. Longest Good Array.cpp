@@ -6,15 +6,27 @@ void solve(){
     ll l,r;
     cin>>l>>r;
 
-    ll soma = 1;
-    ll ans = 0;
-    while (l<=r){
-        ans++;
-        soma = soma+ans;
+    ll i = (l+r)/2;
+    ll x, e = 0, d = i;
+
+    while(e<i){
+
+        x = l + (i*(i+1))/2;
+        //cout<<x<<endl;
+
+        if (x>r){
+            d = i;
+            i = (e+d)/2;
+        }
+        else if (x<r){
+            e = i;
+            i = (e+d)/2;
+        }
+        
+            else break;
     }
 
-
-    cout<<ans<<endl;
+    cout<<i+1<<endl;
 }
 
 int main(){
@@ -23,3 +35,5 @@ int main(){
     int w;cin>>w;
     while(w--)solve();
 }
+
+

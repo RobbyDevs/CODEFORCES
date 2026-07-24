@@ -10,7 +10,9 @@ void solve(){
 
     priority_queue<
         //  <qtd,ind>
-          pair<ll,ll>,vector<pair<ll,ll>>, less<pair<ll,ll>>>fila;
+          pair<ll,ll>,
+          vector<pair<ll,ll>>,
+          less<pair<ll,ll>> >fila;
 
     vector<char>vans;
     for(ll i=0;i<n;i++){

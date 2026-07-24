@@ -1,34 +1,63 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-
-void solve(){
-    ll n;
-    cin>>n;
-    ll aux;
+ll NEG = -1e9;
 
 
-    vector<vector<ll>>grafo(n+1);
-    for (ll i = 1; i<n;i++){
-        cin>>aux;
-
-        grafo[aux].push_back(i+1);
-    }
-
-
-    for (int i = 1; i<=n; i++){
-        cout<<i<<": ";
-        for (int j = 0; j<grafo[i].size(); j++){
-            cout<<grafo[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-
-
+void pg(vector<vector<ll>>&g){
+  
+  for(ll i=0;i<g.size();i++){
+    cout<<i<<"("<<g[i].size()<<") "<<" : ";
+    for(auto x:g[i])cout<<x<<" ";
+    cout<<endl;
+  }
+  cout<<"-----"<<endl;
+  cout<<endl;
 }
 
-int main(){
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    solve();
+
+
+ll dfs(ll p, vector<vector<ll>>& g){
+  
+  ll soma = 0;
+  
+  if (g[p].size() == 0)
+    return 1;
+    
+  else if(g[p].size()<3)
+    return NEG;
+    
+  else{
+    for (auto x:g[p])
+      soma += dfs(x,g);
+
+    if (soma >=3)
+      return 0;
+      
+  return NEG;
+  
+  }
+  
+  
+}
+
+int main(){ 
+  
+  ll n;cin>>n;
+  
+  vector<vector<ll>>g(n+1);
+
+  for(ll i = 1; i<n;i++){
+    ll aux; cin>>aux;
+    g[aux].push_back(i+1);
+  }
+  
+  //pg(g);
+  ll ans = dfs(1,g);
+  //cout<<ans<<endl;
+  
+  if (ans>=0)
+    cout<<"YES"<<endl;
+  else
+    cout<<"NO"<<endl;
 }
